@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 
-class Login extends StatelessWidget{
+class Login_Screen extends StatelessWidget{
   const Login({Key? key}) : super(key: key);
 
   @override
