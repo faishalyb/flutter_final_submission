@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 
 class Login_Screen extends StatelessWidget{
-  const Login({Key? key}) : super(key: key);
+  const Login_Screen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context){
