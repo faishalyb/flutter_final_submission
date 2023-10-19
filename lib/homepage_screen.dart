@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'login_screen.dart';
 var informationTextStyle = const TextStyle(fontFamily: 'Gabarito');
 
 class Homepage_Screen extends StatelessWidget{
@@ -25,7 +26,7 @@ class Homepage_Screen extends StatelessWidget{
                   )
                 ),
                 Container(
-                  padding: EdgeInsets.only(top: 100, left: 50, right: 50),
+                  padding: EdgeInsets.only(top: 100, left: 50, right: 50, bottom: 10),
                   child: Column(
                     children: <Widget>[
                       Image.asset(
@@ -67,7 +68,11 @@ class Homepage_Screen extends StatelessWidget{
                       style: OutlinedButton.styleFrom(
                         side: BorderSide(color: Colors.green, width: 2)
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context){
+                          return Login_Screen();
+                        }));
+                      },
                       child: Text(
                           "Login",
                           style: TextStyle(
