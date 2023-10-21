@@ -93,6 +93,9 @@ class Homepage_Screen extends StatelessWidget{
                             )
                         ),
                       ),
+                      Image.asset(
+                          "assets/png/bg2.png",
+                      )
                     ],
                   )
                 ),

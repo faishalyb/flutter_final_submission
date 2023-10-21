@@ -1,3 +1,4 @@
+import 'package:final_submission/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'homepage_screen.dart';
 
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'faishalyb_final_submission',
       theme: ThemeData(),
-      home: const Homepage_Screen(),
+      home: const Onboarding_Screen(),
     );
   }
 }
