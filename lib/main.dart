@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'faishalyb_final_submission',
       theme: ThemeData(),
-      home: const Onboarding_Screen(),
+      home: Onboarding_Screen(),
     );
   }
 }
