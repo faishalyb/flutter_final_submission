@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'login_screen.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 var informationTextStyle = const TextStyle(fontFamily: 'Gabarito');
 
 
@@ -131,10 +132,24 @@ class _Onboarding_ScreenState extends State<Onboarding_Screen> {
             Visibility(
                 visible: _currentPage < 3,
                 child: Container(
-                  padding: EdgeInsets.only(top: 700,left: 70, right: 70),
+                  padding: EdgeInsets.only(top: 690,left: 70, right: 70),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
+                      Center(
+                        child: SmoothPageIndicator(
+                          controller: _pageController,
+                          count: 3, // Number of pages in the PageView
+                          effect: ExpandingDotsEffect(
+                            activeDotColor: Colors.teal,
+                            dotColor: Colors.grey,
+                            dotWidth: 10,
+                            dotHeight: 10,
+                            spacing: 5,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 20),
                       TextButton(
                         style: TextButton.styleFrom(backgroundColor: Colors.orange),
                         onPressed: () {
@@ -171,10 +186,3 @@ class _Onboarding_ScreenState extends State<Onboarding_Screen> {
     );
   }
 }
-
-
-
-
-
-
-
