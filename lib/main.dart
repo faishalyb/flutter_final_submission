@@ -1,6 +1,5 @@
-import 'package:final_submission/onboarding_screen.dart';
+import 'package:final_submission/onboarding/onboarding_screen.dart';
 import 'package:flutter/material.dart';
-import 'gadipake.dart';
 
 void main() {
   runApp(const MyApp());

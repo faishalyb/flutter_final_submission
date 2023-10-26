@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'login_screen.dart';
+import '../account/login_screen.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 var informationTextStyle = const TextStyle(fontFamily: 'Gabarito');
 
@@ -31,22 +31,6 @@ class _Onboarding_ScreenState extends State<Onboarding_Screen> {
               },
               children: <Widget>[
                 Container(
-                  child: SvgPicture.asset(
-                    "assets/svg/onboarding1.svg",
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height,
-                    fit: BoxFit.cover,
-                  )
-                ),
-                Container(
-                    child: SvgPicture.asset(
-                      "assets/svg/onboarding2.svg",
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height,
-                      fit: BoxFit.cover,
-                    )
-                ),
-                Container(
                     child: Stack(
                       children: <Widget>[
                         SvgPicture.asset(
@@ -61,18 +45,34 @@ class _Onboarding_ScreenState extends State<Onboarding_Screen> {
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: <Widget>[
                               Text(
-                                  "Jadilah bagian dari aksi lindungi Bumi dengan memanfaatkan dan mengelola sampah dengan benar!",
-                              textAlign: TextAlign.justify,
-                              style: TextStyle(
-                                fontFamily: "Gabarito",
-                                color: Colors.grey,
-                                fontSize: 15
-                              ),
+                                "Jadilah bagian dari aksi lindungi Bumi dengan memanfaatkan dan mengelola sampah dengan benar!",
+                                textAlign: TextAlign.justify,
+                                style: TextStyle(
+                                    fontFamily: "Gabarito",
+                                    color: Colors.grey,
+                                    fontSize: 15
+                                ),
                               )
                             ],
                           ),
                         )
                       ],
+                    )
+                ),
+                Container(
+                  child: SvgPicture.asset(
+                    "assets/svg/onboarding1.svg",
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height,
+                    fit: BoxFit.cover,
+                  )
+                ),
+                Container(
+                    child: SvgPicture.asset(
+                      "assets/svg/onboarding2.svg",
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.height,
+                      fit: BoxFit.cover,
                     )
                 ),
                 Container(
@@ -132,7 +132,7 @@ class _Onboarding_ScreenState extends State<Onboarding_Screen> {
             Visibility(
                 visible: _currentPage < 3,
                 child: Container(
-                  padding: EdgeInsets.only(top: 690,left: 70, right: 70),
+                  padding: EdgeInsets.only(top: 650,left: 70, right: 70),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
