@@ -1,3 +1,4 @@
+import 'package:final_submission/account/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../account/login_screen.dart';
@@ -94,7 +95,11 @@ class _Onboarding_ScreenState extends State<Onboarding_Screen> {
                           children: <Widget>[
                             TextButton(
                               style: TextButton.styleFrom(backgroundColor: Colors.teal),
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                  return Register_Screen();
+                                }));
+                              },
                               child: Text(
                                 "Buat Akun Baru",
                                 textAlign: TextAlign.center,

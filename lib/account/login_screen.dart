@@ -2,58 +2,72 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 
-class Login_Screen extends StatelessWidget{
+class Login_Screen extends StatelessWidget {
   const Login_Screen({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+      backgroundColor: Colors.teal,
+      body: SafeArea(
+        child: Stack(
           children: <Widget>[
-            Container(
-              padding: const EdgeInsets.only(top: 120),
-              child: SvgPicture.asset(
-                  "assets/svg/recycle-6-svgrepo-com.svg",
-                  width: 250,
-                  height: 250,
+            SvgPicture.asset(
+                "assets/svg/login_register.svg",
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height,
+                fit: BoxFit.cover,
+            ),
+            CircleAvatar(
+              backgroundColor: Colors.white,
+              child: IconButton(
+                icon: const Icon(
+                  Icons.arrow_back,
+                  color: Colors.teal,
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
               ),
             ),
-            Container(
-              padding: EdgeInsets.all(50),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  Text("Email"),
-                  Padding(
-                      padding: EdgeInsets.all(10.0)
-                  ),
-                  TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: 'emailkamu@gmail.com',
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Center(
+                  child: Text(
+                    "LOGIN",
+                    style: TextStyle(
+                        fontFamily: "Montserrat",
+                        fontWeight: FontWeight.bold,
+                        fontSize: 40,
+                        color: Colors.white
                     ),
                   ),
-                  Padding(
-                      padding: EdgeInsets.all(10.0)
+                ),
+                SizedBox(height: 5,),
+                Text("Halo selamat datang kembali!"),
+                SizedBox(height: 30),
+                Container(
+                  height: 600,
+                  width: 365,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                      borderRadius: BorderRadius.circular(90),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.shade500,
+                          blurRadius: 10,
+                          spreadRadius: 5,
+                          offset: Offset(5,5)
+                        )
+                      ]
                   ),
-                  Text("Password"),
-                  Padding(padding: EdgeInsets.all(10.0)
-                  ),
-                  TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: '***************',
-                    ),
-                  ),
-
-                ],
-              ),
-            ),
+                ),
+              ],
+            )
           ],
-        )
-      )
+        ),
+      ),
     );
   }
 }
