@@ -53,7 +53,7 @@ class _Onboarding_ScreenState extends State<Onboarding_Screen> {
                                     color: Colors.grey,
                                     fontSize: 15
                                 ),
-                              )
+                              ),
                             ],
                           ),
                         )
