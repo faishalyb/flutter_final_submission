@@ -1,3 +1,4 @@
+import 'package:final_submission/account/login_screen.dart';
 import 'package:flutter/material.dart';
 
 
@@ -29,17 +30,22 @@ class Register_Screen extends StatelessWidget {
               // ),
 
             ),
-            CircleAvatar(
-              backgroundColor: Colors.white,
-              child: IconButton(
-                icon: const Icon(
-                  Icons.arrow_back,
-                  color: Colors.teal,
+            Column(
+              children: <Widget>[
+                Padding(padding: EdgeInsets.only(left: 70, top: 15)),
+                CircleAvatar(
+                  backgroundColor: Colors.white,
+                  child: IconButton(
+                    icon: const Icon(
+                      Icons.arrow_back,
+                      color: Colors.teal,
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).popUntil((route) => route.isFirst);
+                    },
+                  ),
                 ),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
+              ],
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -219,9 +225,13 @@ class Register_Screen extends StatelessWidget {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsets.only(left: 170, top: 7),
+                                padding: EdgeInsets.only(left: 157, top: 7),
                                 child: TextButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                        return Login_Screen();
+                                      }));
+                                    },
                                     child:  Text(
                                   "Sudah punya akun? Login sekarang",
                                       style:

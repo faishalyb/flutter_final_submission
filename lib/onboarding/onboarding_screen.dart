@@ -137,7 +137,7 @@ class _Onboarding_ScreenState extends State<Onboarding_Screen> {
             Visibility(
                 visible: _currentPage < 3,
                 child: Container(
-                  padding: EdgeInsets.only(top: 650,left: 70, right: 70),
+                  padding: EdgeInsets.only(top: 650,left: 100, right: 100),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
@@ -145,16 +145,17 @@ class _Onboarding_ScreenState extends State<Onboarding_Screen> {
                         child: SmoothPageIndicator(
                           controller: _pageController,
                           count: 3, // Number of pages in the PageView
-                          effect: ExpandingDotsEffect(
+                          effect: JumpingDotEffect(
                             activeDotColor: Colors.teal,
                             dotColor: Colors.grey,
-                            dotWidth: 10,
-                            dotHeight: 10,
+                            dotWidth: 7,
+                            dotHeight: 7,
                             spacing: 5,
+                            verticalOffset: 10
                           ),
                         ),
                       ),
-                      SizedBox(height: 20),
+                      SizedBox(height: 10),
                       TextButton(
                         style: TextButton.styleFrom(backgroundColor: Colors.orange),
                         onPressed: () {
