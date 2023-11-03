@@ -67,7 +67,7 @@ class Register_Screen extends StatelessWidget {
                             children: <Widget>[
                               SizedBox(height: 60),
                               Padding(
-                                padding: EdgeInsets.only(left: 20, bottom: 10),
+                                padding: EdgeInsets.only(left: 30, bottom: 10),
                                 child: Text(
                                   "Nama",
                                   style: TextStyle(
@@ -111,7 +111,7 @@ class Register_Screen extends StatelessWidget {
                               ),
                               SizedBox(height: 15),
                               Padding(
-                                padding: EdgeInsets.only(left: 20, bottom: 10),
+                                padding: EdgeInsets.only(left: 30, bottom: 10),
                                 child: Text(
                                   "E-mail",
                                   style: TextStyle(
@@ -155,7 +155,7 @@ class Register_Screen extends StatelessWidget {
                               ),
                               SizedBox(height: 15),
                               Padding(
-                                padding: EdgeInsets.only(left: 20, bottom: 10),
+                                padding: EdgeInsets.only(left: 30, bottom: 10),
                                 child: Text(
                                   "Password",
                                   style: TextStyle(
@@ -215,7 +215,7 @@ class Register_Screen extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 25),
+                              SizedBox(height: 35),
                               Center(
                                 child: Container(
                                   child: TextButton(
