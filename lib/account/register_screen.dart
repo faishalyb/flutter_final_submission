@@ -2,8 +2,15 @@ import 'package:final_submission/account/login_screen.dart';
 import 'package:flutter/material.dart';
 
 
-class Register_Screen extends StatelessWidget {
+class Register_Screen extends StatefulWidget {
   const Register_Screen({Key? key}) : super(key: key);
+
+  @override
+  _Register_ScreenState createState() => _Register_ScreenState();
+}
+
+class _Register_ScreenState extends State<Register_Screen> {
+  bool _obscureText= true;
 
   @override
   Widget build(BuildContext context) {
@@ -94,6 +101,11 @@ class Register_Screen extends StatelessWidget {
                                 child:
                                 TextField(
                                   decoration: InputDecoration(
+                                    hintText: "Masukkan Nama Lengkap",
+                                    hintStyle: TextStyle(
+                                      fontSize: 10,
+                                      color: Colors.grey
+                                    ),
                                     focusedBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10),
                                       borderSide: BorderSide(
@@ -138,6 +150,11 @@ class Register_Screen extends StatelessWidget {
                                 child:
                                 TextField(
                                   decoration: InputDecoration(
+                                    hintText: "Masukkan E-Mail valid",
+                                    hintStyle: TextStyle(
+                                      fontSize: 10,
+                                      color: Colors.grey
+                                    ),
                                     focusedBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10),
                                       borderSide: BorderSide(
@@ -181,7 +198,13 @@ class Register_Screen extends StatelessWidget {
                                 ),
                                 child:
                                 TextField(
+                                  obscureText: _obscureText,
                                   decoration: InputDecoration(
+                                    hintText: "Masukkan password kamu",
+                                    hintStyle: TextStyle(
+                                      color: Colors.grey,
+                                      fontSize: 10
+                                    ),
                                     focusedBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10),
                                       borderSide: BorderSide(
@@ -194,6 +217,17 @@ class Register_Screen extends StatelessWidget {
                                             color: Colors.white
                                         )
                                     ),
+                                    suffixIcon: IconButton(
+                                        icon: Icon(
+                                          _obscureText ? Icons.visibility : Icons.visibility_off,
+                                          color: Colors.grey,
+                                        ),
+                                      onPressed: (){
+                                          setState(() {
+                                            _obscureText = !_obscureText;
+                                          });
+                                      },
+                                    )
                                   ),
                                 ),
                               ),

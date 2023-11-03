@@ -3,8 +3,16 @@ import 'package:final_submission/account/register_screen.dart';
 import 'package:flutter/material.dart';
 
 
-class Login_Screen extends StatelessWidget {
+
+class Login_Screen extends StatefulWidget {
   const Login_Screen({Key? key}) : super(key: key);
+
+  @override
+  _Login_ScreenState createState() => _Login_ScreenState();
+}
+
+class _Login_ScreenState extends State<Login_Screen> {
+  bool _obscureText = true;
 
   @override
   Widget build(BuildContext context) {
@@ -96,6 +104,11 @@ class Login_Screen extends StatelessWidget {
                                 child:
                                 TextField(
                                   decoration: InputDecoration(
+                                    hintText: "Masukkan Email",
+                                    hintStyle: TextStyle(
+                                      fontSize: 10,
+                                      color: Colors.grey
+                                    ),
                                     focusedBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10),
                                       borderSide: BorderSide(
@@ -139,7 +152,13 @@ class Login_Screen extends StatelessWidget {
                                 ),
                                 child:
                                 TextField(
+                                  obscureText: _obscureText,
                                   decoration: InputDecoration(
+                                    hintText: "Masukkan Password",
+                                    hintStyle: TextStyle(
+                                      color: Colors.grey,
+                                      fontSize: 10
+                                    ),
                                     focusedBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10),
                                       borderSide: BorderSide(
@@ -152,6 +171,17 @@ class Login_Screen extends StatelessWidget {
                                             color: Colors.white
                                         )
                                     ),
+                                    suffixIcon: IconButton(
+                                      icon: Icon(
+                                        _obscureText ? Icons.visibility : Icons.visibility_off,
+                                        color: Colors.grey,
+                                      ),
+                                      onPressed: () {
+                                        setState(() {
+                                          _obscureText = !_obscureText;
+                                        });
+                                      },
+                                    )
                                   ),
                                 ),
                               ),
@@ -232,3 +262,5 @@ class Login_Screen extends StatelessWidget {
     );
   }
 }
+
+
