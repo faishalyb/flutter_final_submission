@@ -21,32 +21,6 @@ class Login_Screen extends StatelessWidget {
                   fit: BoxFit.fill,
                 ),
               ),
-
-              // decoration: BoxDecoration(
-              //   image: DecorationImage(
-              //       image: AssetImage(
-              //           "assets/png/login_register.png"
-              //       ),
-              //       fit: BoxFit.cover),
-              // ),
-
-            ),
-            Column(
-              children: <Widget>[
-                Padding(padding: EdgeInsets.only(left: 70, top: 15)),
-                CircleAvatar(
-                  backgroundColor: Colors.white,
-                  child: IconButton(
-                    icon: const Icon(
-                      Icons.arrow_back,
-                      color: Colors.teal,
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).popUntil((route) => route.isFirst);
-                    },
-                  ),
-                ),
-              ],
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -59,7 +33,7 @@ class Login_Screen extends StatelessWidget {
                   child: SingleChildScrollView(
                     child: Column(
                       children: <Widget>[
-                        SizedBox(height: 50),
+                        SizedBox(height: 100),
                         Center(
                           child: Text(
                             "LOGIN",
@@ -75,7 +49,7 @@ class Login_Screen extends StatelessWidget {
                         Text("Selamat datang kembali di My-WasteBank!"),
                         SizedBox(height: 30),
                         Container(
-                          height: 550,
+                          height: 450,
                           width: 360,
                           decoration: BoxDecoration(
                               color: Colors.white,
@@ -200,6 +174,33 @@ class Login_Screen extends StatelessWidget {
                                   ),
                                 ),
                               ),
+                              SizedBox(height: 25),
+                              Center(
+                                  child: Container(
+                                      child: TextButton(
+                                        onPressed: () {
+                                          // Add the action you want to perform when the TextButton is pressed.
+                                          // For example, you can navigate to a new screen or perform some action.
+                                        },
+                                        style: TextButton.styleFrom(
+                                          backgroundColor: Colors.green[400],
+                                          minimumSize: Size(150, 50), // Set the desired width and height
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(25),
+                                          ),
+                                        ),
+                                        child: Text(
+                                          "Login",
+                                          style: TextStyle(
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 23,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      )
+                                  )
+                              ),
                             ],
                           ),
                         ),
@@ -208,7 +209,24 @@ class Login_Screen extends StatelessWidget {
                   ),
                 ),
               ],
-            )
+            ),
+
+            // BACK BUTTON
+            Container(
+              padding: EdgeInsets.only(left: 10, top: 10),
+              child: CircleAvatar(
+                backgroundColor: Colors.white,
+                child: IconButton(
+                  icon: const Icon(
+                    Icons.arrow_back,
+                    color: Colors.teal,
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).popUntil((route) => route.isFirst);
+                  },
+                ),
+              ),
+            ),
           ],
         ),
       ),

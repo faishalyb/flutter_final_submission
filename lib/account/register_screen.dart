@@ -20,32 +20,6 @@ class Register_Screen extends StatelessWidget {
                   fit: BoxFit.fill,
                 ),
               ),
-
-              // decoration: BoxDecoration(
-              //   image: DecorationImage(
-              //       image: AssetImage(
-              //           "assets/png/login_register.png"
-              //       ),
-              //       fit: BoxFit.cover),
-              // ),
-
-            ),
-            Column(
-              children: <Widget>[
-                Padding(padding: EdgeInsets.only(left: 70, top: 15)),
-                CircleAvatar(
-                  backgroundColor: Colors.white,
-                  child: IconButton(
-                    icon: const Icon(
-                      Icons.arrow_back,
-                      color: Colors.teal,
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).popUntil((route) => route.isFirst);
-                    },
-                  ),
-                ),
-              ],
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -88,8 +62,7 @@ class Register_Screen extends StatelessWidget {
                                 )
                               ]
                           ),
-                          child:
-                          Column(
+                          child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               SizedBox(height: 60),
@@ -97,34 +70,34 @@ class Register_Screen extends StatelessWidget {
                                 padding: EdgeInsets.only(left: 20, bottom: 10),
                                 child: Text(
                                   "Nama",
-                                style: TextStyle(
-                                    color: Colors.green,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold
-                                ),
+                                  style: TextStyle(
+                                      color: Colors.green,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold
+                                  ),
                                 ),
                               ),
                               Container(
-                                  margin: EdgeInsets.only(left: 20, right: 20),
-                                  decoration:
-                                  BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: Colors.white,
-                                      boxShadow: [
-                                        BoxShadow(
-                                            blurRadius: 10,
-                                            offset: Offset(1,1),
-                                            color: Colors.grey.withOpacity(0.5)
-                                        )
-                                      ]
-                                  ),
+                                margin: EdgeInsets.only(left: 20, right: 20),
+                                decoration:
+                                BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: Colors.white,
+                                    boxShadow: [
+                                      BoxShadow(
+                                          blurRadius: 10,
+                                          offset: Offset(1,1),
+                                          color: Colors.grey.withOpacity(0.5)
+                                      )
+                                    ]
+                                ),
                                 child:
                                 TextField(
                                   decoration: InputDecoration(
                                     focusedBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10),
                                       borderSide: BorderSide(
-                                          color: Colors.white,
+                                        color: Colors.white,
                                       ),
                                     ),
                                     enabledBorder: OutlineInputBorder(
@@ -186,9 +159,9 @@ class Register_Screen extends StatelessWidget {
                                 child: Text(
                                   "Password",
                                   style: TextStyle(
-                                      color: Colors.green,
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
+                                    color: Colors.green,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
@@ -227,20 +200,47 @@ class Register_Screen extends StatelessWidget {
                               Padding(
                                 padding: EdgeInsets.only(left: 157, top: 7),
                                 child: TextButton(
+                                  onPressed: () {
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                      return Login_Screen();
+                                    }));
+                                  },
+                                  child:  Text(
+                                    "Sudah punya akun? Login sekarang",
+                                    style:
+                                    TextStyle(
+                                        fontSize: 11,
+                                        color: Colors.green
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(height: 25),
+                              Center(
+                                child: Container(
+                                  child: TextButton(
                                     onPressed: () {
-                                      Navigator.push(context, MaterialPageRoute(builder: (context) {
-                                        return Login_Screen();
-                                      }));
+                                      // Add the action you want to perform when the TextButton is pressed.
+                                      // For example, you can navigate to a new screen or perform some action.
                                     },
-                                    child:  Text(
-                                  "Sudah punya akun? Login sekarang",
-                                      style:
-                                      TextStyle(
-                                          fontSize: 11,
-                                          color: Colors.green
+                                    style: TextButton.styleFrom(
+                                      backgroundColor: Colors.green[400],
+                                      minimumSize: Size(150, 50), // Set the desired width and height
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(25),
                                       ),
                                     ),
-                                ),
+                                    child: Text(
+                                      "Daftar",
+                                      style: TextStyle(
+                                        fontFamily: "Montserrat",
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 23,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  )
+                                )
                               ),
                             ],
                           ),
@@ -250,7 +250,23 @@ class Register_Screen extends StatelessWidget {
                   ),
                 ),
               ],
-            )
+            ),
+            // BACK BUTTON
+            Container(
+              padding: EdgeInsets.only(left: 10, top: 10),
+              child: CircleAvatar(
+                backgroundColor: Colors.white,
+                child: IconButton(
+                  icon: const Icon(
+                    Icons.arrow_back,
+                    color: Colors.teal,
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).popUntil((route) => route.isFirst);
+                  },
+                ),
+              ),
+            ),
           ],
         ),
       ),
