@@ -1,6 +1,7 @@
 import 'package:final_submission/account/login_screen.dart';
 import 'package:flutter/material.dart';
-
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class Register_Screen extends StatefulWidget {
   const Register_Screen({Key? key}) : super(key: key);
@@ -10,7 +11,50 @@ class Register_Screen extends StatefulWidget {
 }
 
 class _Register_ScreenState extends State<Register_Screen> {
+
   bool _obscureText= true;
+  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
+
+  Future<void> _register() async {
+    final String name = nameController.text;
+    final String email = emailController.text;
+    final String password = passwordController.text;
+    final String confPassword = confirmPasswordController.text;
+
+    final Map<String, dynamic> data = {
+      "name": name,
+      "email": email,
+      "password": password,
+      "confPassword": confPassword
+    };
+
+    final String apiUrl = 'https://backend-dot-cycleme-2023.et.r.appspot.com/users/register';
+
+    final response = await http.post(
+      Uri.parse(apiUrl),
+      body: jsonEncode(data),
+      headers: {'Content-Type': 'application/json'},
+    );
+
+    if (response.statusCode == 201) {
+      // Registration was successful, you can handle the response as needed.
+      print('Registration successful');
+      print('Response status code: ${response.statusCode}');
+      print('Response body: ${response.body}');
+      Navigator.push(context as BuildContext, MaterialPageRoute(builder: (context) {
+        return Login_Screen();
+      }));
+    } else {
+      // Registration failed, handle the error, e.g., show an error message.
+      print('Registration failed');
+      print('Response status code: ${response.statusCode}');
+      print('Response body: ${response.body}');
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +99,7 @@ class _Register_ScreenState extends State<Register_Screen> {
                         Text("Selamat datang di My-WasteBank!"),
                         SizedBox(height: 30),
                         Container(
-                          height: 550,
+                          height: 580,
                           width: 360,
                           decoration: BoxDecoration(
                               color: Colors.white,
@@ -72,7 +116,7 @@ class _Register_ScreenState extends State<Register_Screen> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              SizedBox(height: 60),
+                              SizedBox(height: 35),
                               Padding(
                                 padding: EdgeInsets.only(left: 30, bottom: 10),
                                 child: Text(
@@ -100,6 +144,7 @@ class _Register_ScreenState extends State<Register_Screen> {
                                 ),
                                 child:
                                 TextField(
+                                  controller: nameController,
                                   decoration: InputDecoration(
                                     hintText: "Masukkan Nama Lengkap",
                                     hintStyle: TextStyle(
@@ -149,6 +194,7 @@ class _Register_ScreenState extends State<Register_Screen> {
                                 ),
                                 child:
                                 TextField(
+                                  controller: emailController,
                                   decoration: InputDecoration(
                                     hintText: "Masukkan E-Mail valid",
                                     hintStyle: TextStyle(
@@ -198,6 +244,7 @@ class _Register_ScreenState extends State<Register_Screen> {
                                 ),
                                 child:
                                 TextField(
+                                  controller: passwordController,
                                   obscureText: _obscureText,
                                   decoration: InputDecoration(
                                     hintText: "Masukkan password kamu",
@@ -231,8 +278,70 @@ class _Register_ScreenState extends State<Register_Screen> {
                                   ),
                                 ),
                               ),
+                              SizedBox(height: 15),
                               Padding(
-                                padding: EdgeInsets.only(left: 157, top: 7),
+                                padding: EdgeInsets.only(left: 30, bottom: 10),
+                                child: Text(
+                                  "Confirm Password",
+                                  style: TextStyle(
+                                    color: Colors.green,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(left: 20, right: 20),
+                                decoration:
+                                BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: Colors.white,
+                                    boxShadow: [
+                                      BoxShadow(
+                                          blurRadius: 10,
+                                          offset: Offset(1,1),
+                                          color: Colors.grey.withOpacity(0.5)
+                                      )
+                                    ]
+                                ),
+                                child:
+                                TextField(
+                                  controller: confirmPasswordController,
+                                  obscureText: _obscureText,
+                                  decoration: InputDecoration(
+                                      hintText: "Konfirmasi password kamu",
+                                      hintStyle: TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: 10
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(10),
+                                        borderSide: BorderSide(
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(10),
+                                          borderSide: BorderSide(
+                                              color: Colors.white
+                                          )
+                                      ),
+                                      suffixIcon: IconButton(
+                                        icon: Icon(
+                                          _obscureText ? Icons.visibility : Icons.visibility_off,
+                                          color: Colors.grey,
+                                        ),
+                                        onPressed: (){
+                                          setState(() {
+                                            _obscureText = !_obscureText;
+                                          });
+                                        },
+                                      )
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(left: 157, top: 1),
                                 child: TextButton(
                                   onPressed: () {
                                     Navigator.push(context, MaterialPageRoute(builder: (context) {
@@ -249,11 +358,12 @@ class _Register_ScreenState extends State<Register_Screen> {
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 35),
+                              SizedBox(height: 15),
                               Center(
                                 child: Container(
                                   child: TextButton(
                                     onPressed: () {
+                                      _register();
                                       // Add the action you want to perform when the TextButton is pressed.
                                       // For example, you can navigate to a new screen or perform some action.
                                     },
