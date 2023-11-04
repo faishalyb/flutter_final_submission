@@ -2,6 +2,8 @@ import 'package:final_submission/account/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:final_submission/global/toast.dart';
+
 
 class Register_Screen extends StatefulWidget {
   const Register_Screen({Key? key}) : super(key: key);
@@ -44,6 +46,7 @@ class _Register_ScreenState extends State<Register_Screen> {
       print('Registration successful');
       print('Response status code: ${response.statusCode}');
       print('Response body: ${response.body}');
+      succesToast(message: "Registrasi Berhasil!");
       Navigator.push(context as BuildContext, MaterialPageRoute(builder: (context) {
         return Login_Screen();
       }));
@@ -52,6 +55,7 @@ class _Register_ScreenState extends State<Register_Screen> {
       print('Registration failed');
       print('Response status code: ${response.statusCode}');
       print('Response body: ${response.body}');
+      failedToast(message: "Registrasi gagal!");
     }
   }
 
