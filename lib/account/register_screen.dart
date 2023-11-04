@@ -2,6 +2,8 @@ import 'package:final_submission/account/login_screen.dart';
 import 'package:final_submission/account/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:final_submission/global/toast.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+
 
 
 
@@ -24,13 +26,16 @@ class _Register_ScreenState extends State<Register_Screen> {
 
   AuthService authService = AuthService();
 
+
+
   Future<void> register() async {
+    EasyLoading.show(status: 'Loading');
     final String name = nameController.text;
     final String email = emailController.text;
     final String password = passwordController.text;
     final String confPassword = confPasswordController.text;
-
     bool registrationResult = await authService.register(name, email, password, confPassword);
+    EasyLoading.dismiss();
 
     if (registrationResult) {
       succesToast(message: "Registrasi berhasil! \nmohon untuk Login");
