@@ -1,8 +1,11 @@
 import 'package:final_submission/account/login_screen.dart';
+import 'package:final_submission/account/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:final_submission/global/toast.dart';
+import 'package:final_submission/account/auth.dart';
+
 
 
 class Register_Screen extends StatefulWidget {
@@ -14,50 +17,72 @@ class Register_Screen extends StatefulWidget {
 
 class _Register_ScreenState extends State<Register_Screen> {
 
+
   bool _obscureText= true;
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  TextEditingController confirmPasswordController = TextEditingController();
+  TextEditingController confPasswordController = TextEditingController();
 
-  Future<void> _register() async {
+
+  AuthService authService = AuthService();
+
+  Future<void> register() async {
     final String name = nameController.text;
     final String email = emailController.text;
     final String password = passwordController.text;
-    final String confPassword = confirmPasswordController.text;
+    final String confPassword = confPasswordController.text;
 
-    final Map<String, dynamic> data = {
-      "name": name,
-      "email": email,
-      "password": password,
-      "confPassword": confPassword
-    };
+    bool registrationResult = await authService.register(name, email, password, confPassword);
 
-    final String apiUrl = 'https://backend-dot-cycleme-2023.et.r.appspot.com/users/register';
-
-    final response = await http.post(
-      Uri.parse(apiUrl),
-      body: jsonEncode(data),
-      headers: {'Content-Type': 'application/json'},
-    );
-
-    if (response.statusCode == 201) {
-      // Registration was successful, you can handle the response as needed.
-      print('Registration successful');
-      print('Response status code: ${response.statusCode}');
-      print('Response body: ${response.body}');
-      succesToast(message: "Registrasi Berhasil!");
-      Navigator.push(context as BuildContext, MaterialPageRoute(builder: (context) {
+    if (registrationResult) {
+      succesToast(message: "Registrasi berhasil! \nmohon untuk Login");
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
         return Login_Screen();
       }));
     } else {
-      // Registration failed, handle the error, e.g., show an error message.
-      print('Registration failed');
-      print('Response status code: ${response.statusCode}');
-      print('Response body: ${response.body}');
-      failedToast(message: "Registrasi gagal!");
+      failedToast(message: "Registrasi Gagal! \nmohon periksa kembali!");
     }
   }
+
+  // Future<void> _register() async {
+  //   final String name = nameController.text;
+  //   final String email = emailController.text;
+  //   final String password = passwordController.text;
+  //   final String confPassword = confirmPasswordController.text;
+  //
+  //   final Map<String, dynamic> data = {
+  //     "name": name,
+  //     "email": email,
+  //     "password": password,
+  //     "confPassword": confPassword
+  //   };
+  //
+  //   final String apiUrl = 'https://backend-dot-cycleme-2023.et.r.appspot.com/users/register';
+  //
+  //   final response = await http.post(
+  //     Uri.parse(apiUrl),
+  //     body: jsonEncode(data),
+  //     headers: {'Content-Type': 'application/json'},
+  //   );
+  //
+  //   if (response.statusCode == 201) {
+  //     // Registration was successful, you can handle the response as needed.
+  //     print('Registration successful');
+  //     print('Response status code: ${response.statusCode}');
+  //     print('Response body: ${response.body}');
+  //     succesToast(message: "Registrasi Berhasil!");
+  //     Navigator.push(context as BuildContext, MaterialPageRoute(builder: (context) {
+  //       return Login_Screen();
+  //     }));
+  //   } else {
+  //     // Registration failed, handle the error, e.g., show an error message.
+  //     print('Registration failed');
+  //     print('Response status code: ${response.statusCode}');
+  //     print('Response body: ${response.body}');
+  //     failedToast(message: "Registrasi gagal!");
+  //   }
+  // }
 
 
   @override
@@ -310,7 +335,7 @@ class _Register_ScreenState extends State<Register_Screen> {
                                 ),
                                 child:
                                 TextField(
-                                  controller: confirmPasswordController,
+                                  controller: confPasswordController,
                                   obscureText: _obscureText,
                                   decoration: InputDecoration(
                                       hintText: "Konfirmasi password kamu",
@@ -367,9 +392,9 @@ class _Register_ScreenState extends State<Register_Screen> {
                                 child: Container(
                                   child: TextButton(
                                     onPressed: () {
-                                      _register();
                                       // Add the action you want to perform when the TextButton is pressed.
                                       // For example, you can navigate to a new screen or perform some action.
+                                      register();
                                     },
                                     style: TextButton.styleFrom(
                                       backgroundColor: Colors.green[400],
