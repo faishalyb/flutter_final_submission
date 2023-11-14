@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 82.31 152.34">
+  <defs>
+    <linearGradient id="linear-gradient" x1="17.89" y1="11.3" x2="145.89" y2="244.63" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fee18e"/>
+      <stop offset="1" stop-color="#fec800"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="4.55" y1="-59.92" x2="153.68" y2="211.92" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#86ddcf"/>
+      <stop offset="1" stop-color="#00b68e"/>
+    </linearGradient>
+  </defs>
+  <path d="m82.38,149.8V37.61c-1.67-.15-3.37-.24-5.08-.24-31.11,0-56.33,25.22-56.33,56.33s25.22,56.33,56.33,56.33c1.71,0,3.4-.09,5.08-.24Z" fill="url(#linear-gradient)" opacity=".43" stroke-width="0"/>
+  <path d="m65.58.3H2.52C.72,8.62,1.14,21.65,13.3,36.7c21,26,41,10,58,37,6.16,9.78,8.77,18.64,11.08,26.26V17.1C80.47-3.19,92.47,0,65.58.3Z" fill="url(#linear-gradient-2)" stroke-width="0"/>
+</svg>
