@@ -354,8 +354,6 @@ class _Register_ScreenState extends State<Register_Screen> {
                                 child: Container(
                                   child: TextButton(
                                     onPressed: () {
-                                      // Add the action you want to perform when the TextButton is pressed.
-                                      // For example, you can navigate to a new screen or perform some action.
                                       register();
                                     },
                                     style: TextButton.styleFrom(
