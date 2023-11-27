@@ -2,6 +2,8 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 
 
 
@@ -39,7 +41,7 @@ class AuthService with ChangeNotifier {
       "confPassword": confPassword
     };
 
-    final String apiUrl = 'https://backend-dot-cycleme-2023.et.r.appspot.com/users/register';
+    final String apiUrl = dotenv.env["API_URL"]! + '/users/register';
 
     final response = await http.post(
       Uri.parse(apiUrl),
@@ -59,7 +61,7 @@ class AuthService with ChangeNotifier {
 
   Future<void> login(String email, String password) async {
 
-    final String apiUrl = "https://backend-dot-cycleme-2023.et.r.appspot.com/login";
+    final String apiUrl = dotenv.env["API_URL"]! + '/login';
 
     final response = await http.post(
       Uri.parse(apiUrl),
@@ -95,7 +97,8 @@ class AuthService with ChangeNotifier {
 
 
   Future<void> logout() async {
-      final String apiUrl = "https://backend-dot-cycleme-2023.et.r.appspot.com/logout";
+      final String apiUrl = dotenv.env["API_URL"]! + '/logout';
+
       final response = await http.delete(
         Uri.parse(apiUrl),
         headers: {'Content-Type': 'application/json'},
@@ -115,19 +118,14 @@ class AuthService with ChangeNotifier {
 
 
   Future<void> check() async {
-
     if (_sessionID == null) {
       throw Exception('User is not authenticated');
     }
-
     try {
       print('Session ID before getUserInfo: $_sessionID'); // Add this line
       print('UUID before getUserInfo: $_uuid'); // Add this line
-
-
       print('Request URL: ${Uri.parse('https://backend-dot-cycleme-2023.et.r.appspot.com/me')}');
       print('Request Headers: ${{'Authorization': 'Bearer ${_sessionID ?? ''}'}}');
-
     } catch (e) {
       print('Error in getUserInfo: $e'); // Add this line
       throw Exception('Failed to get user info - $e');
