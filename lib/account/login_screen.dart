@@ -1,6 +1,9 @@
-import 'package:final_submission/account/login_screen.dart';
+import 'package:final_submission/account/auth.dart';
 import 'package:final_submission/account/register_screen.dart';
+import 'package:final_submission/dashboard/dashboard_screen.dart';
+import 'package:final_submission/global/toast.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 
 
@@ -12,7 +15,35 @@ class Login_Screen extends StatefulWidget {
 }
 
 class _Login_ScreenState extends State<Login_Screen> {
+
+
   bool _obscureText = true;
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  AuthService authService = AuthService();
+
+  Future<void> login() async {
+    EasyLoading.show(status: "Loading");
+    final String email = emailController.text;
+    final String password = passwordController.text;
+    try {
+      await authService.login(email, password);
+
+      EasyLoading.dismiss();
+      succesToast(message: "Login berhasil!");
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => Dashboard_Screen()),
+      );
+    } catch (e) {
+      EasyLoading.dismiss();
+      failedToast(message: "Login gagal! \nmohon coba lagi");
+    }
+    EasyLoading.dismiss();
+
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -103,6 +134,7 @@ class _Login_ScreenState extends State<Login_Screen> {
                                 ),
                                 child:
                                 TextField(
+                                  controller: emailController,
                                   decoration: InputDecoration(
                                     hintText: "Masukkan Email",
                                     hintStyle: TextStyle(
@@ -152,6 +184,7 @@ class _Login_ScreenState extends State<Login_Screen> {
                                 ),
                                 child:
                                 TextField(
+                                  controller: passwordController,
                                   obscureText: _obscureText,
                                   decoration: InputDecoration(
                                     hintText: "Masukkan Password",
@@ -208,8 +241,7 @@ class _Login_ScreenState extends State<Login_Screen> {
                                   child: Container(
                                       child: TextButton(
                                         onPressed: () {
-                                          // Add the action you want to perform when the TextButton is pressed.
-                                          // For example, you can navigate to a new screen or perform some action.
+                                          login();
                                         },
                                         style: TextButton.styleFrom(
                                           backgroundColor: Colors.green[400],
