@@ -6,14 +6,8 @@ import 'package:final_submission/account/login_screen.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 
-class Dashboard_Screen extends StatefulWidget {
-  @override
-  State<Dashboard_Screen> createState() => _Dashboard_ScreenState();
-}
-
-class _Dashboard_ScreenState extends State<Dashboard_Screen> {
-    final AuthService authService = AuthService();
-    int _currentIndex = 0;
+class Home_Screen extends StatelessWidget {
+  final AuthService authService = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -33,11 +27,11 @@ class _Dashboard_ScreenState extends State<Dashboard_Screen> {
                         width: MediaQuery.of(context).size.width
                     ),
                     Container(
-                      padding: EdgeInsets.only(left: 15, right: 15),
+                      padding: EdgeInsets.only(left: 20, right: 20),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          SizedBox(height: 35),
+                          SizedBox(height: 40),
                           Center(
                             child: Text(
                               'My-WB',
@@ -49,14 +43,14 @@ class _Dashboard_ScreenState extends State<Dashboard_Screen> {
                               ),
                             ),
                           ),
-                          SizedBox(height: 70),
+                          SizedBox(height: 60),
                           Text(
                             "Pilih material atau barang sisa dibawah ini yang anda ingin daur ulang ke Bank Sampah, atau gunakan Fitur deteksi Sampah",
                             textAlign: TextAlign.justify,
                             style: TextStyle(
                                 color: Colors.white,
                                 fontFamily: "Gabarito",
-                                fontSize: 17
+                                fontSize: 16
                             ),)
                         ],
                       ),
@@ -119,28 +113,6 @@ class _Dashboard_ScreenState extends State<Dashboard_Screen> {
                       ],
                     )
                 )
-              ],
-            ),
-            bottomNavigationBar: BottomNavigationBar(
-              currentIndex: _currentIndex,
-              onTap: (index) {
-                setState(() {
-                  _currentIndex = index;
-                });
-              },
-              items: [
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.home),
-                  label: 'Home',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.restore_from_trash),
-                  label: 'Recycle',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.person),
-                  label: 'Profile',
-                ),
               ],
             ),
           );

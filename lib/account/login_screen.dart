@@ -1,6 +1,6 @@
 import 'package:final_submission/account/auth.dart';
 import 'package:final_submission/account/register_screen.dart';
-import 'package:final_submission/dashboard/dashboard_screen.dart';
+import 'package:final_submission/dashboard/dashboard.dart';
 import 'package:final_submission/global/toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -34,7 +34,7 @@ class _Login_ScreenState extends State<Login_Screen> {
       succesToast(message: "Login berhasil!");
       Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => Dashboard_Screen()),
+          MaterialPageRoute(builder: (context) => Dashboard()),
       );
     } catch (e) {
       EasyLoading.dismiss();
