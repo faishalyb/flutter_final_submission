@@ -39,6 +39,7 @@ flutter:
     - .env
     - assets/svg/
     - assets/png/
+    - assets/jpg/
   fonts:
     - family: Gabarito
       fonts:

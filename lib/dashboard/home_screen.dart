@@ -2,8 +2,6 @@ import 'package:final_submission/account/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:final_submission/account/login_screen.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 
 class Home_Screen extends StatelessWidget {

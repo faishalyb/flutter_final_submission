@@ -12,9 +12,11 @@ class AuthService with ChangeNotifier {
   String? _sessionID;
   String? _uuid;
   String? _name;
+  String? _role;
   String? get uuid => _uuid;
   String? get sessionID => _sessionID;
   String? get name => _name;
+  String? get role => _role;
 
 
   AuthService(){
@@ -27,6 +29,7 @@ class AuthService with ChangeNotifier {
       _sessionID = _prefs.getString('sessionID');
       _uuid = _prefs.getString('uuid');
       _name = _prefs.getString('name');
+      _role = _prefs.getString('role');
     } catch (e) {
       print('Error initializing SharedPreferences: $e');
     }
@@ -79,10 +82,14 @@ class AuthService with ChangeNotifier {
 
       String sessionID = responseBody['loginResult']['sessionID'];
       String name = responseBody['loginResult']['name'];
+      String role = responseBody['loginResult']['role'];
+
 
       SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setString('sessionID', sessionID);
       await prefs.setString('name', name);
+      await prefs.setString('role', role);
+
 
       print('Login response status code: ${response.statusCode}');
       print('Login response body: ${response.body}');

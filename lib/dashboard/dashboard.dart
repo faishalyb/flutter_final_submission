@@ -1,7 +1,6 @@
 import 'package:final_submission/account/auth.dart';
+import 'package:final_submission/dashboard/profile_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'home_screen.dart';
 
 
@@ -17,7 +16,7 @@ class _DashboardState extends State<Dashboard> {
     final List<Widget> _screens = [
       Home_Screen(),
       // Recycle_Screen(),
-      // Profile_Screen()
+      Profile_Screen()
     ];
   @override
   Widget build(BuildContext context) {
