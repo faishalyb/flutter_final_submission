@@ -69,48 +69,97 @@ class Home_Screen extends StatelessWidget {
                               color: Colors.teal
                           ),
                         ),
-                        SizedBox(height: 20),
-                        Row(
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.red
+                        SizedBox(height: 30),
+                        SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            children: <Widget>[
+                              Container(
+                                  child: Image.asset("assets/jpg/alumunium.jpg", fit:BoxFit.cover),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  width: 150,
+                                  height: 250
                               ),
-                              child: Text("Test"),
-                            ),
-                            SizedBox(width: 10),
-                            Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.red
+                              SizedBox(width: 10),
+                              Container(
+                                  child: Image.asset("assets/jpg/Carton.jpg", fit:BoxFit.cover),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  width: 150,
+                                  height: 250
                               ),
-                              child: Text("Test"),
-                            ),
-                            SizedBox(width: 10),
-                            Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.red
+                              SizedBox(width: 10),
+                              Container(
+                                  child: Image.asset("assets/jpg/paper and cardboard.jpg", fit:BoxFit.cover),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  width: 150,
+                                  height: 250
                               ),
-                              child: Text("Test"),
-                            ),
-                            SizedBox(width: 10),
-                            Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.red
+                              SizedBox(width: 10),
+                              Container(
+                                  child: Image.asset("assets/jpg/plastic.jpeg", fit:BoxFit.cover),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  width: 150,
+                                  height: 250
                               ),
-                              child: Text("Test"),
-                            ),
-                            SizedBox(width: 10),
-                            Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.red
+                              SizedBox(width: 10),
+                              Container(
+                                  child: Image.asset("assets/jpg/styrofoam.jpeg", fit:BoxFit.cover),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  width: 150,
+                                  height: 250
                               ),
-                              child: Text("Test"),
-                            ),
-                          ],
+                              SizedBox(width: 10),
+                              Container(
+                                  child: Image.asset("assets/jpg/textiles.jpeg", fit:BoxFit.cover),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  width: 150,
+                                  height: 250
+                              ),
+                              SizedBox(width: 10),
+                              Container(
+                                  child: Image.asset("assets/jpg/glass.jpg", fit:BoxFit.cover),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  width: 150,
+                                  height: 250
+                              )
+                            ],
+                          ),
                         )
                       ],
                     )
+                ),
+                Container(
+                  padding: EdgeInsets.only(top: 2, left: 25),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: <Widget>[
+                      Text(
+                        "Gunakan Fitur Utama",
+                        style: TextStyle(
+                            fontFamily: "Montserrat",
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.teal
+                        ),
+                      ),
+                    ],
+                  ),
                 )
+
               ],
             ),
           );

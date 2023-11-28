@@ -37,10 +37,10 @@ class _DashboardState extends State<Dashboard> {
             icon: Icon(Icons.home),
             label: 'Home',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.restore_from_trash),
-            label: 'Recycle',
-          ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.restore_from_trash),
+          //   label: 'Recycle',
+          // ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: 'Profile',

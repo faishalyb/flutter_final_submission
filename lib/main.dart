@@ -3,7 +3,6 @@ import 'package:final_submission/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter/services.dart';
 
 void main() async {
   await dotenv.load();
@@ -30,7 +29,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'faishalyb_final_submission',
       theme: ThemeData(),
-      home: Onboarding_Screen(),
+      home: Login_Screen(),
       builder: EasyLoading.init(),
     );
   }
