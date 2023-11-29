@@ -16,9 +16,6 @@ class Recycle_Screen extends StatefulWidget {
 
 class _Recycle_ScreenState extends State<Recycle_Screen> {
   final MLService mlService = MLService();
-  File? _selectedImage;
-
-
   Map<String, dynamic>? detectionResult;
 
 
@@ -89,17 +86,17 @@ class _Recycle_ScreenState extends State<Recycle_Screen> {
                     Text(
                       'Unggah Foto',  // Replace with the actual user's name
                       style: TextStyle(
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: "Gabarito"
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "Gabarito"
                       ),
                     ),
                     SizedBox(height: 8),
                     Text(
                       'Fitur ini menggunakan Image Detection yang bisa mendeteksi jenis sampah daur ulang yang anda foto',  // Replace with the actual user's name
                       style: TextStyle(
-                        fontSize: 14,
-                        fontFamily: "Gabarito"
+                          fontSize: 14,
+                          fontFamily: "Gabarito"
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -112,11 +109,8 @@ class _Recycle_ScreenState extends State<Recycle_Screen> {
                             width: 250,
                             height: 400,
                             decoration: BoxDecoration(
-                              border: Border.all(color: Colors.black),
+
                             ),
-                            child: _selectedImage != null
-                                ? Image.file(_selectedImage!, fit: BoxFit.cover)
-                                : Center(child: Text('Tidak ada gambar dipilih')),
                           ),
                           SizedBox(height: 10),
                           Text('Akurasi: ${detectionResult?['accuracy'] ?? 'N/A'}'),
