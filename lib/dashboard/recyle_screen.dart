@@ -17,6 +17,7 @@ class Recycle_Screen extends StatefulWidget {
 class _Recycle_ScreenState extends State<Recycle_Screen> {
   final MLService mlService = MLService();
   Map<String, dynamic>? detectionResult;
+  File? _imageFile;
 
 
   // Buat instance dari MLService
@@ -24,7 +25,10 @@ class _Recycle_ScreenState extends State<Recycle_Screen> {
     final ImagePicker _picker = ImagePicker();
     final XFile? image = await _picker.pickImage(source: ImageSource.camera);
     if (image != null) {
-      return File(image.path);
+      setState(() {
+        _imageFile = File(image.path);
+      });
+      await _detectTrash(_imageFile!);
     } else {
       return null;
     }
@@ -34,7 +38,10 @@ class _Recycle_ScreenState extends State<Recycle_Screen> {
     final ImagePicker _picker = ImagePicker();
     final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
     if (image != null) {
-      return File(image.path);
+      setState(() {
+        _imageFile = File(image.path);
+      });
+      await _detectTrash(_imageFile!);
     } else {
       return null;
     }
@@ -108,9 +115,7 @@ class _Recycle_ScreenState extends State<Recycle_Screen> {
                           Container(
                             width: 250,
                             height: 400,
-                            decoration: BoxDecoration(
-
-                            ),
+                            child: _imageFile != null ? Image.file(_imageFile!) : Image.asset('assets/jpg/placeholder.jpg', fit: BoxFit.cover,),
                           ),
                           SizedBox(height: 10),
                           Text('Akurasi: ${detectionResult?['accuracy'] ?? 'N/A'}'),
