@@ -1,4 +1,3 @@
-import 'package:final_submission/account/login_screen.dart';
 import 'package:final_submission/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -29,7 +28,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'faishalyb_final_submission',
       theme: ThemeData(),
-      home: Login_Screen(),
+      home: Onboarding_Screen(),
       builder: EasyLoading.init(),
     );
   }
