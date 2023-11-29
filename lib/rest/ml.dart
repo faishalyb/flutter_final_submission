@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MLService {
   Future<Map<String, dynamic>> detectTrash(File inputImageFile) async {

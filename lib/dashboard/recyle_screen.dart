@@ -9,9 +9,20 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../account/login_screen.dart';
 import '../global/toast.dart';
 
-class Recycle_Screen extends StatelessWidget {
-  final MLService mlService = MLService(); // Buat instance dari MLService
+class Recycle_Screen extends StatefulWidget {
+  @override
+  State<Recycle_Screen> createState() => _Recycle_ScreenState();
+}
 
+class _Recycle_ScreenState extends State<Recycle_Screen> {
+  final MLService mlService = MLService();
+  File? _selectedImage;
+
+
+  Map<String, dynamic>? detectionResult;
+
+
+  // Buat instance dari MLService
   Future<File?> _takePicture() async {
     final ImagePicker _picker = ImagePicker();
     final XFile? image = await _picker.pickImage(source: ImageSource.camera);
@@ -34,15 +45,19 @@ class Recycle_Screen extends StatelessWidget {
 
   Future<void> _detectTrash(File inputImageFile) async {
     if (inputImageFile != null) {
+      EasyLoading.show(status: "Loading");
       try {
         // Gunakan MLService untuk deteksi sampah
         Map<String, dynamic> data = await mlService.detectTrash(inputImageFile);
-        print('Response from API: $data');
+        detectionResult = data;
+        setState(() {});
+        // print('Response from API: $data');
         // Tampilkan respons ke pengguna sesuai kebutuhan
       } catch (e) {
         // Tangani kesalahan dari MLService
         print('Error: $e');
       }
+      EasyLoading.dismiss();
     }
   }
 
@@ -59,39 +74,76 @@ class Recycle_Screen extends StatelessWidget {
       future: SharedPreferences.getInstance(),
       builder: (BuildContext context, AsyncSnapshot<SharedPreferences> snapshot) {
         if (snapshot.hasData) {
-          String name = snapshot.data!.getString('name') ?? '';
-          String role = snapshot.data!.getString('role') ?? '';
           return Scaffold(
             appBar: AppBar(
-              title: Text('Profile'),
               backgroundColor: Colors.lightGreen,
+              title: Text("Recycle"),
             ),
             body: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CircleAvatar(
-                    radius: 50,
-                    backgroundImage: AssetImage('assets/jpg/profile_picture.jpg'),  // Replace with your image asset
-                  ),
-                  SizedBox(height: 20),
-                  Text(
-                    '$name',  // Replace with the actual user's name
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
+              child: Container(
+                padding: EdgeInsets.only(left: 15, right: 15),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 10),
+                    Text(
+                      'Unggah Foto',  // Replace with the actual user's name
+                      style: TextStyle(
+                        fontSize: 40,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: "Gabarito"
+                      ),
                     ),
-                  ),
-                  Text(
-                    '$role',  // Replace with the actual user's name
-                    style: TextStyle(
-                      fontSize: 14,
+                    SizedBox(height: 8),
+                    Text(
+                      'Fitur ini menggunakan Image Detection yang bisa mendeteksi jenis sampah daur ulang yang anda foto',  // Replace with the actual user's name
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontFamily: "Gabarito"
+                      ),
+                      textAlign: TextAlign.center,
                     ),
-                  ),
-                  SizedBox(height: 30),
-                ],
+                    SizedBox(height: 20),
+                    Center(
+                      child: Column(
+                        children: <Widget>[
+                          // TODO MENAMPILKAN HASIL GAMBAR YANG SUDAH DI FOTO ATAU PICK FROM GALERI
+                          Container(
+                            width: 250,
+                            height: 400,
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Colors.black),
+                            ),
+                            child: _selectedImage != null
+                                ? Image.file(_selectedImage!, fit: BoxFit.cover)
+                                : Center(child: Text('Tidak ada gambar dipilih')),
+                          ),
+                          SizedBox(height: 10),
+                          Text('Akurasi: ${detectionResult?['accuracy'] ?? 'N/A'}'),
+                          Text('Kelas: ${detectionResult?['class_label'] ?? 'N/A'}'),
+                          SizedBox(height: 30),
+                          ElevatedButton.icon(
+                            onPressed: () async {
+                              await _detectTrash(await _takePicture() as File);
+                            },
+                            icon: Icon(Icons.camera_alt),
+                            label: Text("Ambil Gambar"),
+                          ),
+                          ElevatedButton.icon(
+                            onPressed: () async {
+                              await _pickAndDetectTrash();
+                            },
+                            icon: Icon(Icons.upload),
+                            label: Text("Pilih dari Galeri"),
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
+
           );
         } else {
           return CircularProgressIndicator();
@@ -99,5 +151,4 @@ class Recycle_Screen extends StatelessWidget {
       },
     );
   }
-
 }

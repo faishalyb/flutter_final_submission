@@ -1,3 +1,4 @@
+import 'package:final_submission/dashboard/recyle_screen.dart';
 import 'package:final_submission/rest/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -161,6 +162,9 @@ class Home_Screen extends StatelessWidget {
                         SizedBox(height: 30),
                         InkWell(
                           onTap: () {
+                            Navigator.push(
+                                context, MaterialPageRoute(builder: (context) => Recycle_Screen())
+                            );
                             // Tindakan yang ingin dilakukan saat gambar ditekan
                             print('Gambar ditekan!');
                           },
