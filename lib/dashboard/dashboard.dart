@@ -1,3 +1,4 @@
+import 'package:final_submission/dashboard/recyle_screen.dart';
 import 'package:final_submission/rest/auth.dart';
 import 'package:final_submission/dashboard/profile_screen.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,7 @@ class _DashboardState extends State<Dashboard> {
 
     final List<Widget> _screens = [
       Home_Screen(),
-      // Recycle_Screen(),
+      Recycle_Screen(),
       Profile_Screen()
     ];
   @override
@@ -37,10 +38,10 @@ class _DashboardState extends State<Dashboard> {
             icon: Icon(Icons.home),
             label: 'Home',
           ),
-          // BottomNavigationBarItem(
-          //   icon: Icon(Icons.restore_from_trash),
-          //   label: 'Recycle',
-          // ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.recycling),
+            label: 'Recycle',
+          ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: 'Profile',

@@ -671,3 +671,19 @@ class Home_Screen extends StatelessWidget {
     );
   }
 }
+
+
+ElevatedButton.icon(
+onPressed: () async {
+await _detectTrash(await _takePicture() as File);
+},
+icon: Icon(Icons.camera_alt),
+label: Text("Deteksi Sampah"),
+),
+ElevatedButton.icon(
+onPressed: () async {
+await _pickAndDetectTrash();
+},
+icon: Icon(Icons.camera_alt),
+label: Text("Deteksi Sampah"),
+),

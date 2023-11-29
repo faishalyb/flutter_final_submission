@@ -2,57 +2,12 @@ import 'package:final_submission/rest/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'dart:io';
-import 'package:camera/camera.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:final_submission/rest/ml.dart';
+
 
 
 class Home_Screen extends StatelessWidget {
   final AuthService authService = AuthService();
-  final MLService mlService = MLService(); // Buat instance dari MLService
 
-
-  Future<File?> _takePicture() async {
-    final ImagePicker _picker = ImagePicker();
-    final XFile? image = await _picker.pickImage(source: ImageSource.camera);
-    if (image != null) {
-      return File(image.path);
-    } else {
-      return null;
-    }
-  }
-
-  Future<File?> _pickImage() async {
-    final ImagePicker _picker = ImagePicker();
-    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
-    if (image != null) {
-      return File(image.path);
-    } else {
-      return null;
-    }
-  }
-
-  Future<void> _detectTrash(File inputImageFile) async {
-    if (inputImageFile != null) {
-      try {
-        // Gunakan MLService untuk deteksi sampah
-        Map<String, dynamic> data = await mlService.detectTrash(inputImageFile);
-        print('Response from API: $data');
-        // Tampilkan respons ke pengguna sesuai kebutuhan
-      } catch (e) {
-        // Tangani kesalahan dari MLService
-        print('Error: $e');
-      }
-    }
-  }
-
-  Future<void> _pickAndDetectTrash() async {
-    File? imageFile = await _pickImage();
-    if (imageFile != null) {
-      await _detectTrash(imageFile);
-    }
-  }
 
 
   @override
@@ -203,24 +158,22 @@ class Home_Screen extends StatelessWidget {
                               color: Colors.teal
                           ),
                         ),
+                        SizedBox(height: 30),
+                        InkWell(
+                          onTap: () {
+                            // Tindakan yang ingin dilakukan saat gambar ditekan
+                            print('Gambar ditekan!');
+                          },
+                          splashColor: Colors.teal, // Warna efek saat ditekan
+                          child: Image.asset(
+                            'assets/png/Artboard 1.png',
+                            width: 100,
+                            height: 85,
+                            fit: BoxFit.cover,
+                          ),
+                        )
                       ],
                     ),
-                  ),
-
-                  SizedBox(height: 50),
-                  ElevatedButton.icon(
-                    onPressed: () async {
-                      await _detectTrash(await _takePicture() as File);
-                    },
-                    icon: Icon(Icons.camera_alt),
-                    label: Text("Deteksi Sampah"),
-                  ),
-                  ElevatedButton.icon(
-                    onPressed: () async {
-                      await _pickAndDetectTrash();
-                    },
-                    icon: Icon(Icons.camera_alt),
-                    label: Text("Deteksi Sampah"),
                   ),
                 ],
               ),
