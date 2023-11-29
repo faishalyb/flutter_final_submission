@@ -1,5 +1,5 @@
 import 'package:final_submission/account/login_screen.dart';
-import 'package:final_submission/account/auth.dart';
+import 'package:final_submission/rest/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:final_submission/global/toast.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';

@@ -1,4 +1,4 @@
-import 'package:final_submission/account/auth.dart';
+import 'package:final_submission/rest/auth.dart';
 import 'package:final_submission/account/register_screen.dart';
 import 'package:final_submission/dashboard/dashboard.dart';
 import 'package:final_submission/global/toast.dart';

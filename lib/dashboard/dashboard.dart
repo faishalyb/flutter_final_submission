@@ -1,4 +1,4 @@
-import 'package:final_submission/account/auth.dart';
+import 'package:final_submission/rest/auth.dart';
 import 'package:final_submission/dashboard/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'home_screen.dart';

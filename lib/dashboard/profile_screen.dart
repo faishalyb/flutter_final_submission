@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:final_submission/account/auth.dart';
+import 'package:final_submission/rest/auth.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import '../account/login_screen.dart';  // Make sure to import your auth file or package
 import 'package:shared_preferences/shared_preferences.dart';
