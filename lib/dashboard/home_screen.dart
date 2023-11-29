@@ -2,15 +2,16 @@ import 'package:final_submission/account/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'dart:convert';
 import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:http/http.dart' as http;
+import 'package:final_submission/rest/ml.dart';
 
 
 class Home_Screen extends StatelessWidget {
   final AuthService authService = AuthService();
+  final MLService mlService = MLService(); // Buat instance dari MLService
+
 
   Future<File?> _takePicture() async {
     final ImagePicker _picker = ImagePicker();
@@ -32,39 +33,15 @@ class Home_Screen extends StatelessWidget {
     }
   }
 
-
   Future<void> _detectTrash(File inputImageFile) async {
     if (inputImageFile != null) {
       try {
-        // Kirim gambar ke API menggunakan form-data
-        var request = http.MultipartRequest(
-          'POST',
-          Uri.parse('https://ml-api-ilhkkpshpa-uc.a.run.app/predict'),
-        );
-        request.files.add(
-          await http.MultipartFile.fromPath(
-            'image',
-            inputImageFile.path,
-          ),
-        );
-
-        // Kirim permintaan dan terima respons
-        var response = await request.send();
-        var responseData = await response.stream.toBytes();
-        var responseString = String.fromCharCodes(responseData);
-
-        // Handle response
-        if (response.statusCode == 200) {
-          // Respons sukses, lakukan sesuatu dengan respons JSON
-          Map<String, dynamic> data = jsonDecode(responseString);
-          print('Response from API: $data');
-          // Tampilkan respons ke pengguna sesuai kebutuhan
-        } else {
-          // Respons gagal, handle kesalahan
-          print('Failed to detect trash. Status code: ${response.statusCode}');
-        }
+        // Gunakan MLService untuk deteksi sampah
+        Map<String, dynamic> data = await mlService.detectTrash(inputImageFile);
+        print('Response from API: $data');
+        // Tampilkan respons ke pengguna sesuai kebutuhan
       } catch (e) {
-        // Tangani kesalahan koneksi atau lainnya
+        // Tangani kesalahan dari MLService
         print('Error: $e');
       }
     }
