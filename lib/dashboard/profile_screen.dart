@@ -22,52 +22,54 @@ class Profile_Screen extends StatelessWidget {
               backgroundColor: Colors.lightGreen,
             ),
             body: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CircleAvatar(
-                    radius: 50,
-                    backgroundImage: AssetImage('assets/jpg/profile_picture.jpg'),  // Replace with your image asset
-                  ),
-                  SizedBox(height: 20),
-                  Text(
-                    '$name',  // Replace with the actual user's name
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CircleAvatar(
+                      radius: 50,
+                      backgroundImage: AssetImage('assets/jpg/profile_picture.jpg'),  // Replace with your image asset
                     ),
-                  ),
-                  Text(
-                    '$role',  // Replace with the actual user's name
-                    style: TextStyle(
-                      fontSize: 14,
+                    SizedBox(height: 20),
+                    Text(
+                      '$name',  // Replace with the actual user's name
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 30),
-                  TextButton.icon(
-                    onPressed: () async {
-                      EasyLoading.show(status: "Loading");
-                      try {
-                        await authService.logout();
+                    Text(
+                      '$role',  // Replace with the actual user's name
+                      style: TextStyle(
+                        fontSize: 14,
+                      ),
+                    ),
+                    SizedBox(height: 30),
+                    TextButton.icon(
+                      onPressed: () async {
+                        EasyLoading.show(status: "Loading");
+                        try {
+                          await authService.logout();
 
-                        EasyLoading.dismiss();
-                        succesToast(message: "Logout berhasil!");
+                          EasyLoading.dismiss();
+                          succesToast(message: "Logout berhasil!");
 
-                        Navigator.pushReplacement(
-                            context, MaterialPageRoute(builder: (context) => Login_Screen())
-                        );
-                      } catch (e) {
+                          Navigator.pushReplacement(
+                              context, MaterialPageRoute(builder: (context) => Login_Screen())
+                          );
+                        } catch (e) {
 // Handle logout failure
-                      }
-                    },
-                    icon: Icon(Icons.exit_to_app),
-                    label: Text('Logout'),
-                    style: TextButton.styleFrom(
-                      primary: Colors.red,
+                        }
+                      },
+                      icon: Icon(Icons.exit_to_app),
+                      label: Text('Logout'),
+                      style: TextButton.styleFrom(
+                        primary: Colors.red,
+                      ),
                     ),
-                  ),
-                ],
-              ),
+                  ],
+                ),
+              )
             ),
           );
         } else {

@@ -84,63 +84,65 @@ class _Recycle_ScreenState extends State<Recycle_Screen> {
               title: Text("Recycle"),
             ),
             body: Center(
-              child: Container(
-                padding: EdgeInsets.only(left: 15, right: 15),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(height: 10),
-                    Text(
-                      'Unggah Foto',  // Replace with the actual user's name
-                      style: TextStyle(
-                          fontSize: 40,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: "Gabarito"
+              child: SingleChildScrollView(
+                child: Container(
+                  padding: EdgeInsets.only(left: 15, right: 15),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 10),
+                      Text(
+                        'Unggah Foto',  // Replace with the actual user's name
+                        style: TextStyle(
+                            fontSize: 40,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: "Gabarito"
+                        ),
                       ),
-                    ),
-                    SizedBox(height: 8),
-                    Text(
-                      'Fitur ini menggunakan Image Detection yang bisa mendeteksi jenis sampah daur ulang yang anda foto',  // Replace with the actual user's name
-                      style: TextStyle(
-                          fontSize: 14,
-                          fontFamily: "Gabarito"
+                      SizedBox(height: 8),
+                      Text(
+                        'Fitur ini menggunakan Image Detection yang bisa mendeteksi jenis sampah daur ulang yang anda foto',  // Replace with the actual user's name
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontFamily: "Gabarito"
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                      textAlign: TextAlign.center,
-                    ),
-                    SizedBox(height: 20),
-                    Center(
-                      child: Column(
-                        children: <Widget>[
-                          // TODO MENAMPILKAN HASIL GAMBAR YANG SUDAH DI FOTO ATAU PICK FROM GALERI
-                          Container(
-                            width: 250,
-                            height: 400,
-                            child: _imageFile != null ? Image.file(_imageFile!) : Image.asset('assets/jpg/placeholder.jpg', fit: BoxFit.cover,),
-                          ),
-                          SizedBox(height: 10),
-                          Text('Akurasi: ${detectionResult?['accuracy'] ?? 'N/A'}'),
-                          Text('Kelas: ${detectionResult?['class_label'] ?? 'N/A'}'),
-                          SizedBox(height: 30),
-                          ElevatedButton.icon(
-                            onPressed: () async {
-                              await _detectTrash(await _takePicture() as File);
-                            },
-                            icon: Icon(Icons.camera_alt),
-                            label: Text("Ambil Gambar"),
-                          ),
-                          ElevatedButton.icon(
-                            onPressed: () async {
-                              await _pickAndDetectTrash();
-                            },
-                            icon: Icon(Icons.upload),
-                            label: Text("Pilih dari Galeri"),
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
+                      SizedBox(height: 20),
+                      Center(
+                        child: Column(
+                          children: <Widget>[
+                            // TODO MENAMPILKAN HASIL GAMBAR YANG SUDAH DI FOTO ATAU PICK FROM GALERI
+                            Container(
+                              width: 250,
+                              height: 400,
+                              child: _imageFile != null ? Image.file(_imageFile!) : Image.asset('assets/jpg/placeholder.jpg', fit: BoxFit.cover,),
+                            ),
+                            SizedBox(height: 10),
+                            Text('Akurasi: ${detectionResult?['accuracy'] ?? 'N/A'}'),
+                            Text('Kelas: ${detectionResult?['class_label'] ?? 'N/A'}'),
+                            SizedBox(height: 30),
+                            ElevatedButton.icon(
+                              onPressed: () async {
+                                await _detectTrash(await _takePicture() as File);
+                              },
+                              icon: Icon(Icons.camera_alt),
+                              label: Text("Ambil Gambar"),
+                            ),
+                            ElevatedButton.icon(
+                              onPressed: () async {
+                                await _pickAndDetectTrash();
+                              },
+                              icon: Icon(Icons.upload),
+                              label: Text("Pilih dari Galeri"),
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
                 ),
-              ),
+              )
             ),
 
           );
