@@ -30,10 +30,10 @@ class _Onboarding_ScreenState extends State<Onboarding_Screen> {
                 });
               },
               children: <Widget>[
-                SingleChildScrollView(
-                  child: Stack(
-                    children: <Widget>[
-                      Column(
+                Stack(
+                  children: <Widget>[
+                    SingleChildScrollView(
+                      child: Column(
                         // crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           Stack(
@@ -82,16 +82,16 @@ class _Onboarding_ScreenState extends State<Onboarding_Screen> {
                           ),
                         ],
                       ),
-                      Positioned(
-                          bottom: 0,
-                          right: 0,
-                          child: SvgPicture.asset(
-                            "assets/svg/1-3.svg",
-                            width: 500,
-                          )
-                      ),
-                    ],
-                  ),
+                    ),
+                    Positioned(
+                        bottom: 0,
+                        right: 0,
+                        child: SvgPicture.asset(
+                          "assets/svg/1-3.svg",
+                          width: 500,
+                        )
+                    ),
+                  ],
                 ),
                 SingleChildScrollView(
                   child: Stack(
@@ -156,10 +156,10 @@ class _Onboarding_ScreenState extends State<Onboarding_Screen> {
                     ],
                   ),
                 ),
-                SingleChildScrollView(
-                  child: Stack(
-                    children: <Widget>[
-                      Column(
+                Stack(
+                  children: <Widget>[
+                    SingleChildScrollView(
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           Stack(
@@ -214,120 +214,118 @@ class _Onboarding_ScreenState extends State<Onboarding_Screen> {
                           ),
                         ],
                       ),
-                      Positioned(
-                          bottom: 0,
-                          left: -37,
-                          child: SvgPicture.asset(
-                            "assets/svg/3-3.svg",
-                            width: 500,
-                          )
-                      ),
-                    ],
-                  ),
+                    ),
+                    Positioned(
+                        bottom: 0,
+                        left: -37,
+                        child: SvgPicture.asset(
+                          "assets/svg/3-3.svg",
+                          width: 500,
+                        )
+                    ),
+                  ],
                 ),
-                SingleChildScrollView(
-                  child: Stack(
-                    children: <Widget>[
-                      Stack(
-                          children: [
-                            Positioned(
-                                top: -1,
-                                right: 0,
-                                child: SvgPicture.asset(
-                                  "assets/svg/4-1.svg",
-                                  width: 150,
-                                )
-                            ),
-                            Positioned(
-                                bottom: 0,
-                                left: -55,
-                                child: SvgPicture.asset(
-                                  "assets/svg/3-3.svg",
-                                  width: 700,
-                                )
-                            ),
-                            Container(
-                                padding: EdgeInsets.only(top: 70, left: 20),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Text(
-                                      "eco lifestyle",
-                                      style: TextStyle(
-                                          color: Colors.grey,
-                                          fontFamily: "Gabarito",
-                                          fontSize: 20
-                                      ),
-                                    ),
-                                    Text(
-                                      "My-WB",
-                                      style: TextStyle(
-                                          color: Colors.green,
-                                          fontFamily: "Gabarito",
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 60
-                                      ),
-                                    ),
-                                  ],
-                                )
-                            ),
-                            Center(
-                              child: SvgPicture.asset(
-                                'assets/svg/4-2.svg',
-                                width: 350,
-                              ),
-                            ),
-                            Positioned(
+                Stack(
+                  children: <Widget>[
+                    Stack(
+                        children: [
+                          Positioned(
+                              top: -1,
                               right: 0,
-                              left: 0,
-                              bottom: 90,
-                              child: Container(
-                                padding: EdgeInsets.only(right: 90, left: 90),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                                  children: <Widget>[
-                                    TextButton(
-                                      style: TextButton.styleFrom(backgroundColor: Colors.teal),
+                              child: SvgPicture.asset(
+                                "assets/svg/4-1.svg",
+                                width: 150,
+                              )
+                          ),
+                          Positioned(
+                              bottom: 0,
+                              left: -55,
+                              child: SvgPicture.asset(
+                                "assets/svg/3-3.svg",
+                                width: 700,
+                              )
+                          ),
+                          Container(
+                              padding: EdgeInsets.only(top: 70, left: 20),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Text(
+                                    "eco lifestyle",
+                                    style: TextStyle(
+                                        color: Colors.grey,
+                                        fontFamily: "Gabarito",
+                                        fontSize: 20
+                                    ),
+                                  ),
+                                  Text(
+                                    "My-WB",
+                                    style: TextStyle(
+                                        color: Colors.green,
+                                        fontFamily: "Gabarito",
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 60
+                                    ),
+                                  ),
+                                ],
+                              )
+                          ),
+                          Center(
+                            child: SvgPicture.asset(
+                              'assets/svg/4-2.svg',
+                              width: 350,
+                            ),
+                          ),
+                          Positioned(
+                            right: 0,
+                            left: 0,
+                            bottom: 90,
+                            child: Container(
+                              padding: EdgeInsets.only(right: 90, left: 90),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: <Widget>[
+                                  TextButton(
+                                    style: TextButton.styleFrom(backgroundColor: Colors.teal),
+                                    onPressed: () {
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                        return Register_Screen();
+                                      }));
+                                    },
+                                    child: Text(
+                                      "Buat Akun Baru",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 15
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(height: 5),
+                                  OutlinedButton(
+                                      style: OutlinedButton.styleFrom(
+                                          side: BorderSide(color: Colors.teal, width: 2)
+                                      ),
                                       onPressed: () {
-                                        Navigator.push(context, MaterialPageRoute(builder: (context) {
-                                          return Register_Screen();
+                                        Navigator.push(context, MaterialPageRoute(builder: (context){
+                                          return Login_Screen();
                                         }));
                                       },
                                       child: Text(
-                                        "Buat Akun Baru",
-                                        textAlign: TextAlign.center,
+                                        "Login",
                                         style: TextStyle(
-                                            color: Colors.white,
+                                            color: Colors.teal,
                                             fontSize: 15
                                         ),
-                                      ),
-                                    ),
-                                    SizedBox(height: 5),
-                                    OutlinedButton(
-                                        style: OutlinedButton.styleFrom(
-                                            side: BorderSide(color: Colors.teal, width: 2)
-                                        ),
-                                        onPressed: () {
-                                          Navigator.push(context, MaterialPageRoute(builder: (context){
-                                            return Login_Screen();
-                                          }));
-                                        },
-                                        child: Text(
-                                          "Login",
-                                          style: TextStyle(
-                                              color: Colors.teal,
-                                              fontSize: 15
-                                          ),
-                                        )
-                                    )
-                                  ],
-                                ),
+                                      )
+                                  )
+                                ],
                               ),
-                            )
-                          ]
-                      ),
-                    ],
-                  ),
+                            ),
+                          )
+                        ]
+                    ),
+                  ],
                 ),
               ],
             ),
