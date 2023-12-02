@@ -1,16 +1,7 @@
 # final_submission
-
 Flutter Project for final submission on Dicoding Academy
 
 ## Getting Started
+This project was my starting up for Flutter Development. got ara ara ~
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![DESIGN MOBILE APP UI KIT](https://github.com/faishalyb/flutter_final_submission/assets/101534919/ba477b21-7a70-48db-bc9b-0978fe7dfd8c)
